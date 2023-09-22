@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/detailDeparture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        tools:text="SVO"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/detailArrival"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        tools:text="FRA"
+        android:layout_marginTop="16dp" />
+    <TextView
+        android:id="@+id/detailStartTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        tools:text="2023-09-01"
+        android:layout_marginTop="16dp" />
+    <TextView
+        android:id="@+id/detailEndTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        tools:text="2023-09-01"
+        android:layout_marginTop="16dp" />
+    <TextView
+        android:id="@+id/detailPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        tools:text="2056"
+        android:layout_marginTop="16dp" />
+
+
+</LinearLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/flightList">
+    <fragment
+        android:id="@+id/flightList"
+        android:name="com.descritas.timetotrip.activity.FlightListFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/flight_list">
+        <action
+            android:id="@+id/action_flightListFragment_to_flightDetailFragment"
+            app:destination="@id/flightDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/flightDetail"
+        android:name="com.descritas.timetotrip.activity.FlightDetail"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_flight_detail">
+        <argument
+            android:name="flight"
+            app:argType="com.descritas.timetotrip.activity.Flight" />
+    </fragment>
+
+
+</navigation>
