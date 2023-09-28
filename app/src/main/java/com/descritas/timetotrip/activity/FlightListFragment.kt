@@ -4,14 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.descritas.timetotrip.R
+import com.descritas.timetotrip.adapter.FlightAdapter
+import com.descritas.timetotrip.adapter.OnInteractionListener
 import com.descritas.timetotrip.databinding.FlightListBinding
+import com.descritas.timetotrip.dto.Flight
+import com.descritas.timetotrip.model.FlightModelState
+import com.descritas.timetotrip.viewModel.FlightViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class FlightListFragment  : Fragment() {
 
@@ -46,9 +50,28 @@ class FlightListFragment  : Fragment() {
         })
         binding.list.adapter = flightAdapter
 
-        viewModel.data.observe(viewLifecycleOwner) { state -> flightAdapter.submitList(state.posts)
-        binding.emptyText.isVisible = state.empty
+        viewModel.data1.observe(viewLifecycleOwner) {state->
+            //val dataList: ArrayList<Flight> = viewModel.cardFiller2()
+            //flightAdapter.submitList(dataList)
+            flightAdapter.submitList(state.flights)
         }
+        viewModel.state.observe(viewLifecycleOwner) { state ->
+
+            binding.progress.isVisible = state is FlightModelState.Loading
+
+            if (state is FlightModelState.Error) {
+                Snackbar.make(binding.root, R.string.error_loading, Snackbar.LENGTH_LONG)
+                    .setAction(R.string.retry_loading) {
+                        viewModel.refresh()
+                    }
+                    .show()
+            }
+
+        }
+
+        //viewModel.data.observe(viewLifecycleOwner) { state -> flightAdapter.submitList(state.posts)
+//
+        //}
         //viewModel.state.observe(viewLifecycleOwner) { state ->
         //    binding.progress.isVisible = state is FeedModelState.Loading
         //    if (state is FeedModelState.Error) {
