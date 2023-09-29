@@ -6,23 +6,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 
 import com.descritas.timetotrip.R
 import com.descritas.timetotrip.dto.Flight
+import com.descritas.timetotrip.viewModel.FlightViewModel
 
 
 class FlightDetail : Fragment() {
     private val args: FlightDetailArgs by navArgs()
     private lateinit var flight: Flight
+    private val viewModel: FlightViewModel by activityViewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        flight = args.flight
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        flight = args.flight
         val view = inflater.inflate(R.layout.fragment_flight_detail, container, false)
 
 

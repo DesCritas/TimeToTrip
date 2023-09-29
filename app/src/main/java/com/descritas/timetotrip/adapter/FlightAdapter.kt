@@ -45,6 +45,9 @@ class FlightViewHolder(
             like.setOnClickListener {
                 onInteractionListener.onLike(flight)
             }
+            root.setOnClickListener{
+                onInteractionListener.onItemClick(flight)
+            }
         }
     }
 
