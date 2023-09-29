@@ -8,9 +8,10 @@ import com.descritas.timetotrip.dto.Flight
 import java.io.IOException
 
 class FlightRepositoryImpl(): FlightRepository {
+    private var flights = emptyList<Flight>()
 
-    override suspend fun likeByIdAsync(flight: Flight) {
-        TODO("Not yet implemented")
+    override suspend fun likeById(flight: Flight) {
+        flight.liked = !flight.liked
     }
 
     override suspend fun getFlights():List<Flight> {
@@ -26,20 +27,10 @@ class FlightRepositoryImpl(): FlightRepository {
 
 
 
-
-            //val response = FlightsApi.retrofitService.getFlights()
-            //if (!response.isSuccessful) {
-            //    throw ApiError(response.code(), response.message())
-            //}
-            //val body = response.body() ?: throw ApiError(response.code(), response.message())
-            ////postDao.insert(body.toEntity())
-//
-            //val responseBody = response.body?.string() ?: ""
-            //flightList = gson.fromJson(responseBody, FlightList::class.java)
             val listOfFlights = mutableListOf<Flight>()
-            //listOfFlights.addAll(body.flights)
+
             response?.flights?.let { listOfFlights.addAll(it) }
-            //listOfFlights.addAll(response)
+
             return listOfFlights
         } catch (e: IOException) {
             throw NetworkError

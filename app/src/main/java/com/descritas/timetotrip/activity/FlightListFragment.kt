@@ -37,8 +37,8 @@ class FlightListFragment  : Fragment() {
             }
 
             override fun onLike(flight: Flight) {
-                super.onLike(flight)
-                //viewModel.likeById(flight)
+                //super.onLike(flight)
+                viewModel.likeById(flight)
             }
 
         })

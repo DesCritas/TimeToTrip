@@ -59,11 +59,11 @@ class FlightViewModel(application: Application) : AndroidViewModel(application) 
         viewModelScope
             .launch {
                 try {
-                    repository.likeByIdAsync(flight)
-                    //_state.value = FeedModelState.Idle
+                    repository.likeById(flight)
+                    _state.value = FlightModelState.Idle
 
                 } catch (e: Exception) {
-                    //_state.value = FeedModelState.Error
+                    _state.value =FlightModelState.Error
                 }
             }
 

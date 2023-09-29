@@ -24,6 +24,6 @@ data class Flight(
     @SerializedName("endCity")
     val endCity: String,
 
-    val liked: Boolean
+    var liked: Boolean
 ): Serializable
 
