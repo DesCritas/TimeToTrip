@@ -1,16 +1,13 @@
-package com.descritas.timetotrip.activity
+package com.descritas.timetotrip.adapter
 
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.descritas.timetotrip.R
 import com.descritas.timetotrip.databinding.FlightCardBinding
-import com.google.android.material.button.MaterialButton
+import com.descritas.timetotrip.dto.Flight
 
 interface OnInteractionListener {
     fun onItemClick(flight: Flight)

@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_flight_detail">
         <argument
             android:name="flight"
-            app:argType="com.descritas.timetotrip.activity.Flight" />
+            app:argType="com.descritas.timetotrip.dto.Flight" />
     </fragment>
 
 

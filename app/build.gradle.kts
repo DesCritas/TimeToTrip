@@ -57,6 +57,9 @@ dependencies {
     val gson_version = "2.10.1"
     val nav_version = "2.6.0"
     val okhttp_version = "4.11.0"
+    val retrofit_version = "2.9.0"
+    val retrofitgson_version = "2.9.0"
+    val okhttplogging_version = "4.10.0"
 
 
     implementation("androidx.core:core-ktx:$core_version")
@@ -72,6 +75,10 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycle_version")
     implementation ("androidx.recyclerview:recyclerview:$recyclerview_version")
+    implementation ("com.squareup.retrofit2:retrofit:$retrofit_version")
+    implementation ("com.squareup.retrofit2:converter-gson:$retrofitgson_version")
+    implementation ("com.squareup.okhttp3:logging-interceptor:$okhttplogging_version")
+    implementation ("com.google.code.gson:gson:2.8.9")
 
 
 
