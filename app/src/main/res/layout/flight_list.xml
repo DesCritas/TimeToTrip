@@ -13,6 +13,7 @@
         android:layout_marginBottom="@dimen/standard_padding"
         android:text="@string/error_loading"
         app:layout_constraintBottom_toTopOf="@+id/retryButton"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -32,7 +33,7 @@
         android:id="@+id/errorGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:constraint_referenced_ids="retryTitle,retryButton" />
 
     <TextView
