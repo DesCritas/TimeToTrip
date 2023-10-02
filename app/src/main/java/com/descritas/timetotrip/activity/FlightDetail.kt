@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
+import com.descritas.timetotrip.adapter.concatPrice
+import com.descritas.timetotrip.adapter.formatStringToDate
 import com.descritas.timetotrip.databinding.FragmentFlightDetailBinding
 import com.descritas.timetotrip.dto.Flight
 import com.descritas.timetotrip.viewModel.FlightViewModel
@@ -33,11 +35,11 @@ class FlightDetail : Fragment() {
         flight: Flight
     ) {
         with(binding) {
-            detailDeparture.text = flight.departure
-            detailArrival.text = flight.arrival
-            detailStartTime.text = flight.startDate
-            detailEndTime.text = flight.endDate
-            detailPrice.text = flight.price
+            detailDeparture.text = flight.startCity
+            detailArrival.text = flight.endCity
+            detailStartTime.text = formatStringToDate(flight.startDate)
+            detailEndTime.text = formatStringToDate(flight.endDate)
+            detailPrice.text = concatPrice(flight.price)
             like.isChecked = flight.liked
             like.setOnClickListener {
                 viewModel.likeById(flight)

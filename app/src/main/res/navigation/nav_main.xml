@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/flightList"
         android:name="com.descritas.timetotrip.activity.FlightListFragment"
-        android:label="fragment_list"
+        android:label="Пора в путешествие"
         tools:layout="@layout/flight_list">
         <action
             android:id="@+id/action_flightListFragment_to_flightDetailFragment"
@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/flightDetail"
         android:name="com.descritas.timetotrip.activity.FlightDetail"
-        android:label="fragment_detail"
+        android:label="Детали перелета"
         tools:layout="@layout/fragment_flight_detail">
         <argument
             android:name="flight"

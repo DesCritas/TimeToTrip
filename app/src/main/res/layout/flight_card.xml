@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/standard_padding">
 
+
         <TextView
             android:id="@+id/departure"
             android:layout_width="wrap_content"
@@ -34,8 +35,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/arrival"
             android:contentDescription="@string/arrow_image"
 
-            app:layout_constraintEnd_toStartOf="@+id/arrival"
-            app:layout_constraintStart_toEndOf="@id/departure"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/arrival"
             app:tint="@color/cardview_dark_background"
             tools:srcCompat="@drawable/baseline_arrow_right_alt_24" />
@@ -95,6 +96,20 @@
             app:constraint_referenced_ids="startDate, endDate" />
 
         <TextView
+            android:id="@+id/price_flag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/standard_padding"
+            android:layout_marginEnd="@dimen/standard_padding"
+            android:ellipsize="end"
+            android:text="@string/price_flag"
+            android:singleLine="true"
+            app:layout_constraintEnd_toStartOf="@id/price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/like"
+            app:layout_constraintBottom_toBottomOf="@id/like"
+            tools:text="Цена:" />
+        <TextView
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,7 +118,7 @@
             android:ellipsize="end"
             android:singleLine="true"
             app:layout_constraintEnd_toStartOf="@id/arrow"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/price_flag"
             app:layout_constraintTop_toTopOf="@id/like"
             app:layout_constraintBottom_toBottomOf="@id/like"
             tools:text="4135руб." />
@@ -119,7 +134,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/arrow"
             app:layout_constraintEnd_toEndOf="parent"
-
+            app:backgroundTint="#00FFFFFF"
+            app:rippleColor="#00FFFFFF"
             app:layout_constraintTop_toBottomOf="@id/bar2"
             tools:checked="true" />
 

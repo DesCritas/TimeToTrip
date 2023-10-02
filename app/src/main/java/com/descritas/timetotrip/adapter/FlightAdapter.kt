@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.descritas.timetotrip.databinding.FlightCardBinding
 import com.descritas.timetotrip.dto.Flight
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 interface OnInteractionListener {
     fun onItemClick(flight: Flight)
@@ -36,11 +38,11 @@ class FlightViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(flight: Flight) {
         with(binding) {
-            departure.text = flight.departure
-            arrival.text = flight.arrival
-            startDate.text = flight.startDate
-            endDate.text = flight.endDate
-            price.text = flight.price
+            departure.text = flight.startCity
+            arrival.text = flight.endCity
+            startDate.text = formatStringToDate(flight.startDate)
+            endDate.text = formatStringToDate(flight.endDate)
+            price.text = concatPrice(flight.price)
             like.isChecked = flight.liked
 
             like.setOnClickListener {
@@ -65,4 +67,16 @@ class FlightDiffCallback : DiffUtil.ItemCallback<Flight>() {
     override fun areContentsTheSame(oldItem: Flight, newItem: Flight): Boolean {
         return oldItem == newItem
     }
+}
+
+fun formatStringToDate(dateString: String): String {
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z z")
+    val dateTime = LocalDateTime.parse(dateString, formatter)
+
+    val outputFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
+
+    return dateTime.format(outputFormatter)
+}
+fun concatPrice(priceString: String): String{
+    return "$priceString руб."
 }
