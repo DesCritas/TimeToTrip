@@ -7,6 +7,48 @@
     tools:context=".activity.FlightListFragment">
 
     <TextView
+        android:id="@+id/from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/standard_padding"
+        android:layout_marginEnd="40dp"
+        android:textSize="20sp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/header1"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@id/destination"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Отправление"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/destination"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="@dimen/standard_padding"
+        android:textSize="20sp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/header2"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toEndOf="@id/from"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Прибытие"
+        tools:visibility="visible" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="from" />
+
+    <TextView
         android:id="@+id/retryTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,7 +105,7 @@
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrier"
         tools:listitem="@layout/flight_card" />
 
 

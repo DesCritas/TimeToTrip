@@ -6,4 +6,11 @@
     <string name="arrow_image">arrow image</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="header1">Отправление</string>
+    <string name="header2">Прибытие</string>
+    <string name="price_flag">Цена:</string>
+    <string name="from_flag">Откуда:</string>
+    <string name="destination_flag">Куда:</string>
+    <string name="start_time_flag">Время вылета:</string>
+    <string name="end_time_flag">Время прибытия:</string>
 </resources>
