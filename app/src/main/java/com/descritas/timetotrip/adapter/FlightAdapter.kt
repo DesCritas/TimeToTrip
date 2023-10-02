@@ -16,25 +16,26 @@ interface OnInteractionListener {
 
 class FlightAdapter(
     private val onInteractionListener: OnInteractionListener
-) : ListAdapter<Flight, FlightViewHolder>(PostDiffCallback()) {
+) : ListAdapter<Flight, FlightViewHolder>(FlightDiffCallback()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlightViewHolder {
         val binding = FlightCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return FlightViewHolder(binding, onInteractionListener)
     }
+
     override fun onBindViewHolder(holder: FlightViewHolder, position: Int) {
         val flight = getItem(position)
         holder.bind(flight)
     }
 
 }
+
 class FlightViewHolder(
-    private val binding: FlightCardBinding,
-    private val onInteractionListener: OnInteractionListener
+    private val binding: FlightCardBinding, private val onInteractionListener: OnInteractionListener
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(flight: Flight) {
-        binding.apply {
+        with(binding) {
             departure.text = flight.departure
             arrival.text = flight.arrival
             startDate.text = flight.startDate
@@ -45,7 +46,7 @@ class FlightViewHolder(
             like.setOnClickListener {
                 onInteractionListener.onLike(flight)
             }
-            root.setOnClickListener{
+            root.setOnClickListener {
                 onInteractionListener.onItemClick(flight)
             }
         }
@@ -53,9 +54,12 @@ class FlightViewHolder(
 
 
 }
-class PostDiffCallback : DiffUtil.ItemCallback<Flight>() {
+
+class FlightDiffCallback : DiffUtil.ItemCallback<Flight>() {
     override fun areItemsTheSame(oldItem: Flight, newItem: Flight): Boolean {
-        return oldItem.departure == newItem.departure && oldItem.arrival == newItem.arrival && oldItem.startDate == newItem.startDate
+        return oldItem.departure == newItem.departure &&
+                oldItem.arrival == newItem.arrival &&
+                oldItem.startDate == newItem.startDate
     }
 
     override fun areContentsTheSame(oldItem: Flight, newItem: Flight): Boolean {

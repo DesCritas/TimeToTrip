@@ -13,26 +13,25 @@ import com.descritas.timetotrip.viewModel.FlightViewModel
 
 class FlightDetail : Fragment() {
     private val args: FlightDetailArgs by navArgs()
-    private lateinit var flight: Flight
     private val viewModel: FlightViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        flight = args.flight
+    ): View {
+        val flight = args.flight
         val binding = FragmentFlightDetailBinding.inflate(
-            inflater,
-            container,
-            false
+            inflater, container, false
         )
-        bindLayout(binding)
+        bindFlightDetails(binding, flight)
 
         return binding.root
-
     }
 
-    private fun bindLayout(binding: FragmentFlightDetailBinding) {
+    private fun bindFlightDetails(
+        binding: FragmentFlightDetailBinding,
+        flight: Flight
+    ) {
         with(binding) {
             detailDeparture.text = flight.departure
             detailArrival.text = flight.arrival
@@ -43,17 +42,6 @@ class FlightDetail : Fragment() {
             like.setOnClickListener {
                 viewModel.likeById(flight)
             }
-        }
-    }
-
-    companion object {
-        fun newInstance(flight: Flight): FlightDetail {
-            val bundle = Bundle().apply {
-                putSerializable("flight", flight)
-            }
-            val fragment = FlightDetail()
-            fragment.arguments = bundle
-            return fragment
         }
     }
 }
