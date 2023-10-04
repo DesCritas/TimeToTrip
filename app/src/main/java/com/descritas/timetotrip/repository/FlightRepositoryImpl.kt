@@ -2,6 +2,7 @@ package com.descritas.timetotrip.repository
 
 import android.os.NetworkOnMainThreadException
 import com.descritas.timetotrip.api.OkHttpApiClient
+import com.descritas.timetotrip.api.RetrofitApiClient
 import com.descritas.timetotrip.error.NetworkError
 import com.descritas.timetotrip.error.UnknownError
 import com.descritas.timetotrip.dto.Flight
@@ -16,7 +17,8 @@ class FlightRepositoryImpl : FlightRepository {
     override suspend fun getFlights(): List<Flight> {
 
         try {
-            val response = OkHttpApiClient.getFlights()
+            //val response = OkHttpApiClient.getFlights()
+            val response = RetrofitApiClient.getFlightsRetrofit()
 
             val listOfFlights = mutableListOf<Flight>()
 
